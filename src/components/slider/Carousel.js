@@ -19,7 +19,7 @@ export default function Carousel({ slides }) {
   return (
     <div className="overflow-hidden relative">
       <div
-        className={`flex transition ease-out duration-40`}
+        className="flex transition ease-out duration-40"
         style={{
           transform: `translateX(-${current * 100}%)`,
         }}
