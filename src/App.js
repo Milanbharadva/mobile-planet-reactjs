@@ -1,11 +1,14 @@
 import Navbar from "./components/navbar/Navbar";
-import Slider from "./components/slider/Slider";
-import './App.css'
+import "./App.css";
+import { Link, Route, Routes } from "react-router-dom";
+import Home from "./components/home/Home";
 export default function App() {
   return (
     <>
-      <Navbar/>
-      {/* <Slider /> */}
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+      </Routes>
     </>
   );
 }
