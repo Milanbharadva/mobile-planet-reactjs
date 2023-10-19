@@ -25,3 +25,10 @@
   background-color: #051922;
   transition: all .1s;
 }
+
+.icons{
+border: 2px #F28123 dotted;
+border-radius:50% ;
+padding: 16px;
+height: fit-content;
+}

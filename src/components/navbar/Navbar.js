@@ -91,7 +91,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <nav className="flex z-10 mb-2  sticky top-0 pr-10 bg-[#051922] text-white">
+    <nav className="flex z-10   sticky top-0 pr-10 bg-[#07212e] text-white">
       <div className="h-10vh flex z-50  lg:py-5 px-10 py-4 flex-1">
         <div className="flex items-center flex-1">
           <span className="text-3xl font-bold">

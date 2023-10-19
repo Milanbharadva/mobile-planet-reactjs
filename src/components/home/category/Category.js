@@ -12,7 +12,7 @@ const Category = () => {
       {uniqdata.map((item) => {
         return (
           <div
-            className="flex flex-col justify-between items-center a p-10 hover:shadow-none transition"
+            className="flex flex-col justify-between items-center a p-10 hover:shadow-none transition cursor-pointer"
             onClick={() => navigate(`/?cat=${item.categoryname}`)}
           >
             <img
