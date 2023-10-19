@@ -1,6 +1,6 @@
 import Breadcrumb from "../breadcrumb/Breadcrumb";
 import { FaMoneyBillAlt, FaSyncAlt, FaTruck } from "react-icons/fa";
-import { BsBriefcaseFill, BsFillTelephoneFill } from "react-icons/bs";
+import { BsBriefcaseFill } from "react-icons/bs";
 const About = () => {
   return (
     <section>
