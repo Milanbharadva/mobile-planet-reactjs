@@ -1,4 +1,4 @@
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import product from "../../../data/product";
 
 const Category = () => {

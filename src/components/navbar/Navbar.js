@@ -14,8 +14,6 @@ const Navbar = () => {
       <div className="lg:hidden block absolute top-16 w-full left-0 right-0  text-white transition">
         <ul className="text-center text-xl p-10 mt-5  bg-[#0c1923]">
           <NavLink
-            
-            
             to="/"
             onClick={() => {
               setClick(false);
@@ -24,8 +22,6 @@ const Navbar = () => {
             <li className="my-4 py-4   hover:rounded">HOME</li>
           </NavLink>
           <NavLink
-            
-            
             to="/about"
             onClick={() => {
               setClick(false);
@@ -34,8 +30,6 @@ const Navbar = () => {
             <li className="my-4 py-4  [#F28123] hover:rounded">ABOUT</li>
           </NavLink>
           <NavLink
-            
-            
             to="/contact"
             onClick={() => {
               setClick(false);
@@ -44,8 +38,6 @@ const Navbar = () => {
             <li className="my-4 py-4   hover:rounded">CONTACT</li>
           </NavLink>
           <NavLink
-            
-            
             to="/shop"
             onClick={() => {
               setClick(false);
@@ -54,8 +46,6 @@ const Navbar = () => {
             <li className="my-4 py-4   hover:rounded">SHOP</li>
           </NavLink>
           <NavLink
-            
-            
             to="/product"
             onClick={() => {
               setClick(false);
@@ -64,8 +54,6 @@ const Navbar = () => {
             <li className="my-4 py-4   hover:rounded">PRODUCT</li>
           </NavLink>
           <NavLink
-            
-            
             to="/signin"
             onClick={() => {
               setClick(false);
@@ -74,8 +62,6 @@ const Navbar = () => {
             <li className="my-4 py-4   hover:rounded">SIGN IN</li>
           </NavLink>
           <NavLink
-            
-            
             to="/cart"
             className="inline-block"
             onClick={() => {
@@ -106,37 +92,37 @@ const Navbar = () => {
         <div className="lg:flex md:flex lg: flex-1 items-center justify-end font-normal hidden">
           <div className="flex-10">
             <ul className="flex gap-8 mr-16 text-[17px] ">
-              <NavLink   to="/">
+              <NavLink to="/">
                 <li className="hover:text-[#F28123] transition  cursor-pointer">
                   HOME
                 </li>
               </NavLink>
-              <NavLink   to="/about">
+              <NavLink to="/about">
                 <li className="hover:text-[#F28123] transition [#F28123] cursor-pointer">
                   ABOUT
                 </li>
               </NavLink>
-              <NavLink   to="/contact">
+              <NavLink to="/contact">
                 <li className="hover:text-[#F28123] transition [#F28123] cursor-pointer">
                   CONTACT
                 </li>
               </NavLink>
-              <NavLink   to="/shop">
+              <NavLink to="/shop">
                 <li className="hover:text-[#F28123] transition [#F28123] cursor-pointer">
                   SHOP
                 </li>
               </NavLink>
-              <NavLink   to="/product">
+              <NavLink to="/product">
                 <li className="hover:text-[#F28123] transition [#F28123] cursor-pointer">
                   PRODUCT
                 </li>
               </NavLink>
-              <NavLink   to="/signin">
+              <NavLink to="/signin">
                 <li className="hover:text-[#F28123] transition [#F28123] cursor-pointer">
                   SIGN IN
                 </li>
               </NavLink>
-              <NavLink   to="/cart">
+              <NavLink to="/cart">
                 <li>
                   <AiOutlineShoppingCart className="text-2xl hover:fill-[#F28123]" />
                 </li>

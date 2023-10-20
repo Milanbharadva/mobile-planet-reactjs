@@ -8,8 +8,8 @@ const Home = () => {
     <>
       <Slider />
       <Header />
-      <Category/>
-      <HomeAbout/>
+      <Category />
+      <HomeAbout />
     </>
   );
 };

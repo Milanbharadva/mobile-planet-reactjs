@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-img{
+img {
     height: revert-layer;
     width: revert-layer;
     object-fit: contain;
