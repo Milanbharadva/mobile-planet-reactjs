@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../hook/usefetch";
 
-const Shop = () => {
+const Shop = () => { const top = () => {
+  window.scrollTo(0, 0);
+};
   const navigate = useNavigate();
   const { data, error, isPending } = useFetch(
     "https://ecommerce-project-d04f8-default-rtdb.firebaseio.com/product.json"
@@ -11,6 +13,7 @@ const Shop = () => {
   }
   return (
     <div className="mt-10">
+      {top()}
       {error && (
         <div className="flex items-center justify-center">
           <h1 className="text-3xl font-semibold text-red-700">

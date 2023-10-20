@@ -9,7 +9,7 @@ import Shop from "./components/shop/Shop";
 import Product from "./components/product/Product";
 export default function App() {
   return (
-    <div onLoad={() => window.scrollTo(0, 0)}>
+    <div>
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />

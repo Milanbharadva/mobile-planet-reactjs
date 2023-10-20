@@ -3,9 +3,12 @@ import Category from "./category/Category";
 import Header from "./header/Header";
 import Slider from "./slider/Slider";
 
-const Home = () => {
+const Home = () => { const top = () => {
+  window.scrollTo(0, 0);
+};
   return (
     <>
+    {top()}
       <Slider />
       <Header />
       <Category />

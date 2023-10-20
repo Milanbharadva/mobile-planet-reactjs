@@ -1,5 +1,8 @@
 import { useFetch } from "../../hook/usefetch";
 const Product = () => {
+  const top = () => {
+    window.scrollTo(0, 0);
+  };
   const { data, error, isPending } = useFetch(
     "https://ecommerce-project-d04f8-default-rtdb.firebaseio.com/product.json"
   );
@@ -8,6 +11,7 @@ const Product = () => {
   }
   return (
     <div className="mt-10 md:mx-20 sm:mx-10 mx-3 lg:mx-20 xl:mx-48 ">
+      {top()}
       {error && (
         <div className="flex items-center justify-center">
           <h1 className="text-3xl font-semibold text-red-700">
@@ -20,7 +24,7 @@ const Product = () => {
           <h1 className="text-2xl font-semibold ">Loading...</h1>
         </div>
       )}
-      <div >
+      <div>
         {val &&
           val.map((item) => (
             <div
