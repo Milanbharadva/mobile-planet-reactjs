@@ -3,15 +3,19 @@ import { BsFillMapFill } from "react-icons/bs";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { FaAddressBook, FaMapMarkerAlt } from "react-icons/fa";
 const Contact = () => {
+  const top=()=>{
+    window.scrollTo(0,0)
+  }
   return (
+    
     <section>
+      {top()}
       <Breadcrumb paragraph="GET 24/7 SUPPORT" heading="Contact us" />
       <div className="md:mx-16 mx-10 flex lg:flex-row flex-col space-y-4 lg:mx-20 mt-32 mb-32">
         <div className="lg:w-[60%]">
           <div>
             <div>
               <h2 className="text-2xl font-bold mb-5 ">
-           
                 Have you any question?
               </h2>
               <p>
@@ -104,8 +108,16 @@ const Contact = () => {
         </p>
       </div>
       <div class=" embed-responsive embed-responsive-21by9">
-		<iframe title="map" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1846.2534419614776!2d70.78406620092875!3d22.25878099837955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDE1JzMxLjYiTiA3MMKwNDcnMDUuMyJF!5e0!3m2!1sen!2sin!4v1689948682744!5m2!1sen!2sin" width="100%" height="450" frameborder="0"  allowfullscreen="" class="embed-responsive-item"></iframe>
-	</div>
+        <iframe
+          title="map"
+          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1846.2534419614776!2d70.78406620092875!3d22.25878099837955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDE1JzMxLjYiTiA3MMKwNDcnMDUuMyJF!5e0!3m2!1sen!2sin!4v1689948682744!5m2!1sen!2sin"
+          width="100%"
+          height="450"
+          frameborder="0"
+          allowfullscreen=""
+          class="embed-responsive-item"
+        ></iframe>
+      </div>
     </section>
   );
 };

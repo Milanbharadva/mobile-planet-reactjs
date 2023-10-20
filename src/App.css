@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  scroll-behavior: smooth;
   padding: 0;
 }
 
@@ -33,6 +34,6 @@
   height: fit-content;
 }
 
-input{
+input {
   border: 1px solid rgb(53, 52, 52);
 }
