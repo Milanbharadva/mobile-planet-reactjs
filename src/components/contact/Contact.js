@@ -2,13 +2,42 @@ import Breadcrumb from "../breadcrumb/Breadcrumb";
 import { BsFillMapFill } from "react-icons/bs";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { FaAddressBook, FaMapMarkerAlt } from "react-icons/fa";
+import { useState } from "react";
+import { useFetch } from "../../hook/usefetch";
 const Contact = () => {
-  const top = () => {
-    window.scrollTo(0, 0);
+  const [formdata, setFormdata] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+  const [datastatus, setDatastatus] = useState(false);
+  const url =
+    "https://ecommerce-project-d04f8-default-rtdb.firebaseio.com/contact.json";
+
+  const { data, error, isPending } = useFetch(url);
+  const validate = (e) => {
+    e.preventDefault();
+    console.log(formdata);
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => (data.name ? setDatastatus(true) : ""));
   };
+  const handler = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setFormdata((prevformdata) => ({ ...prevformdata, [name]: value }));
+  };
+
   return (
     <section>
-      {top()}
       <Breadcrumb paragraph="GET 24/7 SUPPORT" heading="Contact us" />
       <div className="md:mx-16 mx-10 flex lg:flex-row flex-col space-y-4 lg:mx-20 mt-32 mb-32">
         <div className="lg:w-[60%]">
@@ -24,17 +53,21 @@ const Contact = () => {
               </p>
             </div>
             <div className="mt-6">
-              <form action="">
+              <form action="" onSubmit={validate}>
                 <div className="w-full mb-4">
                   <input
                     type="text"
                     placeholder="Name"
-                    className="h-12 w-full mb-5 md:mb-0 md:w-[48%] mr-4 p-4"
+                    name="name"
+                    className="h-12 w-full mb-5 md:mb-0 md:w-[48%] mr-4 p-4 "
+                    onChange={handler}
                   />
                   <input
                     type="email"
                     placeholder="Email"
                     className="h-12 w-full md:w-[48%] p-4"
+                    name="email"
+                    onChange={handler}
                   />
                 </div>
                 <div className="w-full mb-4">
@@ -42,21 +75,31 @@ const Contact = () => {
                     type="number"
                     placeholder="Phone"
                     className="h-12 w-full md:w-[48%] mr-4 p-4 mb-5 md:mb-0"
+                    name="phone"
+                    onChange={handler}
                   />
                   <input
                     type="text"
                     placeholder="Subject"
                     className="h-12 w-full md:w-[48%] p-4"
+                    name="subject"
+                    onChange={handler}
                   />
                 </div>
                 <textarea
                   className="border border-black w-full p-4 h-32 resize-none"
                   placeholder="Message"
-                  wrap="soft"
+                  name="message"
+                  onChange={handler}
                 ></textarea>
+                <button className="buttons">Submit</button>
               </form>
+              {datastatus && (
+                <h2 className="text-lg text-green-700 mt-2">
+                  Your data is submitted successfully.
+                </h2>
+              )}
             </div>
-            <button className="buttons">Submit</button>
           </div>
         </div>
         <div className=" lg:w-[40%] md:ml-10 sm:ml-6 ml-3 lg:ml-16">
