@@ -3,11 +3,17 @@ import { FaTimes } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-const Navbar = () => {
+import { useFetch } from "../../hook/usefetch";
+const Navbar = (props) => {
   const handleclick = () => {
     setClick(!click);
   };
-
+  const { data } = useFetch(
+    "https://ecommerce-project-d04f8-default-rtdb.firebaseio.com/user.json"
+  );
+  if (data != null) {
+    var val = Object.values(data);
+  }
   const [click, setClick] = useState(false);
   const content = (
     <>
@@ -53,14 +59,28 @@ const Navbar = () => {
           >
             <li className="my-4 py-4   hover:rounded">PRODUCT</li>
           </NavLink>
-          <NavLink
-            to="/signin"
-            onClick={() => {
-              setClick(false);
-            }}
-          >
-            <li className="my-4 py-4   hover:rounded">SIGN IN</li>
-          </NavLink>
+          {val &&
+          val.filter((item) => item.ID === localStorage.getItem("userid"))
+            .length > 0 ? (
+            <NavLink
+              onClick={() => {
+                setClick(false);
+                props.onchange();
+                localStorage.removeItem("userid");
+              }}
+            >
+              <li className="my-4 py-4   hover:rounded">SIGN OUT</li>
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/signin"
+              onClick={() => {
+                setClick(false);
+              }}
+            >
+              <li className="my-4 py-4   hover:rounded">SIGN IN</li>
+            </NavLink>
+          )}
           <NavLink
             to="/cart"
             className="inline-block"
@@ -117,11 +137,26 @@ const Navbar = () => {
                   PRODUCT
                 </li>
               </NavLink>
-              <NavLink to="/signin">
-                <li className="hover:text-[#F28123] transition [#F28123] cursor-pointer">
-                  SIGN IN
-                </li>
-              </NavLink>
+              {val &&
+              val.filter((item) => item.ID === localStorage.getItem("userid"))
+                .length > 0 ? (
+                <NavLink
+                  onClick={() => {
+                    props.onchange();
+                    localStorage.removeItem("userid");
+                  }}
+                >
+                  <li className="hover:text-[#F28123] transition [#F28123] cursor-pointer">
+                    SIGN OUT
+                  </li>
+                </NavLink>
+              ) : (
+                <NavLink to="/signin">
+                  <li className="hover:text-[#F28123] transition [#F28123] cursor-pointer">
+                    SIGN IN
+                  </li>
+                </NavLink>
+              )}
               <NavLink to="/cart">
                 <li>
                   <AiOutlineShoppingCart className="text-2xl hover:fill-[#F28123]" />

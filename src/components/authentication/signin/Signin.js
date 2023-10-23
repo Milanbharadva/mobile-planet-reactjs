@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../../hook/usefetch";
 
-const Signin = () => {
+const Signin = (props) => {
   const { data, error, isPending } = useFetch(
     "https://ecommerce-project-d04f8-default-rtdb.firebaseio.com/user.json"
   );
@@ -31,6 +31,8 @@ const Signin = () => {
         .map((userdata) => {
           localStorage.setItem("userid", userdata.ID);
           console.log(userdata)
+          props.onchange()
+          navigate('/')
         });
     }
   };
