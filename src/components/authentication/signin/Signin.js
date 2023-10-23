@@ -21,14 +21,17 @@ const Signin = () => {
 
   const validate = (e) => {
     e.preventDefault();
-    if (data != null ) {
+    if (data != null) {
       var val = Object.values(data);
       val
         .filter(
           (item) =>
             item.email === formdata.email && item.password === formdata.password
         )
-        .map((userdata) => console.log(userdata));
+        .map((userdata) => {
+          localStorage.setItem("userid", userdata.ID);
+          console.log(userdata)
+        });
     }
   };
   return (
