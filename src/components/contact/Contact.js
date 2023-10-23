@@ -13,21 +13,23 @@ const Contact = () => {
   };
   const [formdata, setFormdata] = useState(objstructure);
   const [datastatus, setDatastatus] = useState(false);
-  const url =
-    "https://ecommerce-project-d04f8-default-rtdb.firebaseio.com/contact.json";
 
   const validate = (e) => {
     e.preventDefault();
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(formdata),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
+    fetch(
+      "https://ecommerce-project-d04f8-default-rtdb.firebaseio.com/contact.json",
+      {
+        method: "POST",
+        body: JSON.stringify(formdata),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => (data.name ? setDatastatus(true) : ""));
     setFormdata(objstructure);
+    
   };
   const handler = (e) => {
     e.preventDefault();
