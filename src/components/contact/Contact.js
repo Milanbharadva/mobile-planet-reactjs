@@ -3,23 +3,21 @@ import { BsFillMapFill } from "react-icons/bs";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { FaAddressBook, FaMapMarkerAlt } from "react-icons/fa";
 import { useState } from "react";
-import { useFetch } from "../../hook/usefetch";
 const Contact = () => {
-  const [formdata, setFormdata] = useState({
+  const objstructure = {
     name: "",
     email: "",
     phone: "",
     subject: "",
     message: "",
-  });
+  };
+  const [formdata, setFormdata] = useState(objstructure);
   const [datastatus, setDatastatus] = useState(false);
   const url =
     "https://ecommerce-project-d04f8-default-rtdb.firebaseio.com/contact.json";
 
-  const { data, error, isPending } = useFetch(url);
   const validate = (e) => {
     e.preventDefault();
-    console.log(formdata);
     fetch(url, {
       method: "POST",
       body: JSON.stringify(formdata),
@@ -29,6 +27,7 @@ const Contact = () => {
     })
       .then((res) => res.json())
       .then((data) => (data.name ? setDatastatus(true) : ""));
+    setFormdata(objstructure);
   };
   const handler = (e) => {
     e.preventDefault();
@@ -61,6 +60,7 @@ const Contact = () => {
                     name="name"
                     className="h-12 w-full mb-5 md:mb-0 md:w-[48%] mr-4 p-4 "
                     onChange={handler}
+                    value={formdata.name}
                   />
                   <input
                     type="email"
@@ -68,6 +68,7 @@ const Contact = () => {
                     className="h-12 w-full md:w-[48%] p-4"
                     name="email"
                     onChange={handler}
+                    value={formdata.email}
                   />
                 </div>
                 <div className="w-full mb-4">
@@ -77,6 +78,7 @@ const Contact = () => {
                     className="h-12 w-full md:w-[48%] mr-4 p-4 mb-5 md:mb-0"
                     name="phone"
                     onChange={handler}
+                    value={formdata.phone}
                   />
                   <input
                     type="text"
@@ -84,6 +86,7 @@ const Contact = () => {
                     className="h-12 w-full md:w-[48%] p-4"
                     name="subject"
                     onChange={handler}
+                    value={formdata.subject}
                   />
                 </div>
                 <textarea
@@ -91,6 +94,7 @@ const Contact = () => {
                   placeholder="Message"
                   name="message"
                   onChange={handler}
+                  value={formdata.message}
                 ></textarea>
                 <button className="buttons">Submit</button>
               </form>
