@@ -36,9 +36,8 @@ const Signin = () => {
   };
   return (
     <div>
-      <div className="flex justify-center mt-5    ">
+      <div className="flex justify-center mt-5">
         <form
-          action=""
           method="post"
           className="flex  items-center  flex-col gap-3"
           onSubmit={validate}
