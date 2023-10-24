@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
@@ -62,7 +62,7 @@ const Navbar = (props) => {
           {val &&
           val.filter((item) => item.ID === localStorage.getItem("userid"))
             .length > 0 ? (
-            <NavLink
+            <Link
               onClick={() => {
                 setClick(false);
                 props.onchange();
@@ -70,7 +70,7 @@ const Navbar = (props) => {
               }}
             >
               <li className="my-4 py-4   hover:rounded">SIGN OUT</li>
-            </NavLink>
+            </Link>
           ) : (
             <NavLink
               to="/signin"
@@ -140,7 +140,7 @@ const Navbar = (props) => {
               {val &&
               val.filter((item) => item.ID === localStorage.getItem("userid"))
                 .length > 0 ? (
-                <NavLink
+                <Link
                   onClick={() => {
                     props.onchange();
                     localStorage.removeItem("userid");
@@ -149,7 +149,7 @@ const Navbar = (props) => {
                   <li className="hover:text-[#F28123] transition [#F28123] cursor-pointer">
                     SIGN OUT
                   </li>
-                </NavLink>
+                </Link>
               ) : (
                 <NavLink to="/signin">
                   <li className="hover:text-[#F28123] transition [#F28123] cursor-pointer">

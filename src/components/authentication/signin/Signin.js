@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../../hook/usefetch";
+import { useCookies } from "react-cookie";
 
 const Signin = (props) => {
+  const [cookies, setCookie, removeCookie] = useCookies(["userID,userstatus"]);
   const { data, error, isPending } = useFetch(
     "https://ecommerce-project-d04f8-default-rtdb.firebaseio.com/user.json"
   );
@@ -23,17 +25,21 @@ const Signin = (props) => {
     e.preventDefault();
     if (data != null) {
       var val = Object.values(data);
-      val
-        .filter(
-          (item) =>
-            item.email === formdata.email && item.password === formdata.password
-        )
-        .map((userdata) => {
+      let filtereddata = val.filter(
+        (item) =>
+          item.email === formdata.email && item.password === formdata.password
+      );
+      if (filtereddata.length > 0) {
+        filtereddata.map((userdata) => {
           localStorage.setItem("userid", userdata.ID);
-          console.log(userdata)
-          props.onchange()
-          navigate('/')
+          setCookie("userID", userdata.ID);
+          setCookie("userstatus", true);
+
+          console.log(userdata);
+          props.onchange();
+          navigate("/");
         });
+      }
     }
   };
   return (

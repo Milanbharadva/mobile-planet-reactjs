@@ -10,15 +10,19 @@ import Product from "./components/product/Product";
 import Signup from "./components/authentication/signup/Signup";
 import Signin from "./components/authentication/signin/Signin";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 export default function App() {
-  const [userstatus,setUserstatus]=useState(false)
+  const [cookies, setCookie, removeCookie] = useCookies(["userID,userstatus"]);
 
-  const setstatus=()=>{
-    setUserstatus(prevstate=>!prevstate)
-  }
+  const [userstatus, setUserstatus] = useState(false);
+
+  const setstatus = () => {
+    setUserstatus((prevstate) => !prevstate);
+  };
   return (
     <div>
-      <Navbar onchange={setstatus}/>
+      {cookies.userID&&<p>{cookies.userID}</p>}
+      <Navbar onchange={setstatus} />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/about" element={<About />} />
@@ -26,7 +30,7 @@ export default function App() {
         <Route exact path="/shop" element={<Shop />} />
         <Route exact path="/product" element={<Product />} />
         <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/signin" element={<Signin onchange={setstatus}/>} />
+        <Route exact path="/signin" element={<Signin onchange={setstatus} />} />
       </Routes>
       <Footer />
     </div>
